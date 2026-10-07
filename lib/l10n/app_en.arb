@@ -1,0 +1,12 @@
+{
+  "appTitle": "Sales & Inventory",
+  "dashboard": "Dashboard",
+  "reports": "Reports",
+  "totalSales": "Total Sales",
+  "inventoryQty": "Inventory Quantities",
+  "startDate": "Start Date",
+  "endDate": "End Date",
+  "generateReport": "Generate Report",
+  "exportPdf": "Export PDF",
+  "language": "Language"
+}

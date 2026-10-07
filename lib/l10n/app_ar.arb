@@ -1,0 +1,12 @@
+{
+  "appTitle": "المبيعات والمخزون",
+  "dashboard": "لوحة التحكم",
+  "reports": "التقارير",
+  "totalSales": "إجمالي المبيعات",
+  "inventoryQty": "كميات المخزون",
+  "startDate": "تاريخ البداية",
+  "endDate": "تاريخ النهاية",
+  "generateReport": "إنشاء التقرير",
+  "exportPdf": "تصدير PDF",
+  "language": "اللغة"
+}
