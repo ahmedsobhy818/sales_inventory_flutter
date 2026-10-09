@@ -1,6 +1,7 @@
 // lib/main.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:my_app/l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
 import 'providers/locale_provider.dart';
@@ -31,15 +32,8 @@ class MyApp extends StatelessWidget {
       title: 'Sales & Inventory Template',
       debugShowCheckedModeBanner: false,
       locale: localeProvider.locale,
-      localizationsDelegates: const [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: const [
-        Locale('en', ''),
-        Locale('ar', ''),
-      ],
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
       theme: ThemeData(
         primarySwatch: Colors.indigo,
         useMaterial3: true,
@@ -71,14 +65,14 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (index) => setState(() => _currentIndex = index),
-        items: const [
+        items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.dashboard),
-            label: 'Dashboard',
+            icon: const Icon(Icons.dashboard),
+            label: AppLocalizations.of(context)!.dashboard,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.assignment),
-            label: 'Reports',
+            icon: const Icon(Icons.assignment),
+            label: AppLocalizations.of(context)!.reports,
           ),
         ],
       ),

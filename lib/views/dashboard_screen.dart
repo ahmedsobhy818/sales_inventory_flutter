@@ -1,5 +1,6 @@
 // lib/views/dashboard_screen.dart
 import 'package:flutter/material.dart';
+import 'package:my_app/l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:fl_chart/fl_chart.dart';
 import '../providers/dashboard_provider.dart';
@@ -24,13 +25,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     final provider = context.watch<DashboardProvider>();
+    final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Dashboard'),
+        title: Text(l10n.dashboard),
         actions: [
           IconButton(
             icon: const Icon(Icons.language),
+            tooltip: l10n.language,
             onPressed: () => context.read<LocaleProvider>().toggleLocale(),
           ),
         ],
@@ -42,11 +45,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _buildSummaryCards(provider.data),
+                  _buildSummaryCards(provider.data, l10n),
                   const SizedBox(height: 24),
-                  const Text(
-                    'Sales Trend',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  Text(
+                    l10n.salesTrend,
+                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 12),
                   SizedBox(height: 220, child: _buildLineChart(provider.data)),
@@ -56,7 +59,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 
-  Widget _buildSummaryCards(Map<String, dynamic>? data) {
+  Widget _buildSummaryCards(Map<String, dynamic>? data, AppLocalizations l10n) {
     return Row(
       children: [
         Expanded(
@@ -65,7 +68,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               padding: const EdgeInsets.all(16),
               child: Column(
                 children: [
-                  const Text('Total Sales'),
+                  Text(l10n.totalSales),
                   const SizedBox(height: 8),
                   Text('\$${data?['totalSales'] ?? 0}',
                       style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
@@ -80,7 +83,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               padding: const EdgeInsets.all(16),
               child: Column(
                 children: [
-                  const Text('Inventory Qty'),
+                  Text(l10n.inventoryQty),
                   const SizedBox(height: 8),
                   Text('${data?['totalInventory'] ?? 0}',
                       style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),

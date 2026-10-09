@@ -1,5 +1,6 @@
 // lib/views/report_search_screen.dart
 import 'package:flutter/material.dart';
+import 'package:my_app/l10n/app_localizations.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
 
@@ -18,8 +19,10 @@ class _ReportSearchScreenState extends State<ReportSearchScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
-      appBar: AppBar(title: const Text('Reports')),
+      appBar: AppBar(title: Text(l10n.reports)),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
@@ -29,17 +32,17 @@ class _ReportSearchScreenState extends State<ReportSearchScreen> {
             children: [
               DropdownButtonFormField<String>(
                 value: _reportType,
-                decoration: const InputDecoration(labelText: 'Report Type'),
-                items: const [
-                  DropdownMenuItem(value: 'Sales', child: Text('Sales Report')),
-                  DropdownMenuItem(value: 'Inventory', child: Text('Inventory Summary')),
+                decoration: InputDecoration(labelText: l10n.reportType),
+                items: [
+                  DropdownMenuItem(value: 'Sales', child: Text(l10n.salesReport)),
+                  DropdownMenuItem(value: 'Inventory', child: Text(l10n.inventorySummary)),
                 ],
                 onChanged: (val) => setState(() => _reportType = val!),
               ),
               const SizedBox(height: 16),
               ElevatedButton.icon(
                 icon: const Icon(Icons.picture_as_pdf),
-                label: const Text('Generate & Export Report'),
+                label: Text(l10n.generateExportReport),
                 onPressed: _generateAndPreviewPdf,
               ),
             ],
