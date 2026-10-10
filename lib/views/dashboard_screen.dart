@@ -17,9 +17,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   void initState() {
     super.initState();
-    Future.microtask(
-      () => context.read<DashboardProvider>().loadDashboard(),
-    );
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      context.read<DashboardProvider>().loadDashboard();
+    });
   }
 
   @override
